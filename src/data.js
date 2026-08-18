@@ -73,7 +73,7 @@ export const projects = [
     id: "crypto",
     name: "Sketch AI",
     description: "An AI-powered research and productivity platform inspired by modern AI assistants like Perplexity. Sketch AI combines conversational AI, real-time communication, web search, voice input, image uploads, and document intelligence into a single application.",
-    tech: ["TypeScript", "Node.js", "Redis", "Docker", "Express"],
+    tech: ["React" , "Node.js", "Redis", "Langchain", "Express"],
     github: "https://github.com/anandrajjee981-max/Sketch-ai",
     demo: "https://sketch-ai-earj.onrender.com/",
     video: "https://www.linkedin.com/posts/anand-raj-059011387_sketchai-artificialintelligence-reactjs-activity-7474797242625937408-z2LR?utm_source=share&utm_medium=member_desktop&rcm=ACoAAF84SAUBA8Hj2QSuNxgtclxaQpJ6PflJhMc",
