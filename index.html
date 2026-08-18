@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ANAND RAJ | Cinematic Portfolio</title>
+    
+    <!-- Meta Descriptions for SEO -->
+    <meta name="description" content="Cinematic portfolio of Anand Raj, Full Stack Developer. Experience a Hollywood-inspired interactive web-slinging journey through modern engineering." />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;800;900&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <!-- Custom Cursor -->
+    <div class="custom-cursor" id="custom-cursor"></div>
+    <div class="custom-cursor-dot" id="custom-cursor-dot"></div>
+
+    <!-- WebGL Canvas Background -->
+    <canvas id="webgl-canvas"></canvas>
+
+    <!-- Interactive Neon Overlay Grid (for Sci-Fi look) -->
+    <div class="hud-overlay"></div>
+
+    <!-- Cinematic Audio Elements (Environmental Ambient) -->
+    <audio id="ambient-audio" loop src="/audio.mp3" preload="auto"></audio>
+    <audio id="web-shoot-audio" src="https://assets.mixkit.co/active_storage/sfx/1487/1487-84.wav" volume="0.4"></audio>
+    <audio id="lightning-audio" src="https://assets.mixkit.co/active_storage/sfx/1657/1657-84.wav" volume="0.3"></audio>
+
+    <!-- Cinematic Loading Screen -->
+    <div id="loader">
+      <div class="loader-content">
+        <div class="cyber-glitch-text" data-text="SYSTEM INITIALIZING">SYSTEM INITIALIZING</div>
+        <div class="loader-bar-container">
+          <div class="loader-bar" id="loader-bar"></div>
+        </div>
+        <div class="loader-percentage" id="loader-percent">0%</div>
+        <button id="enter-btn" class="glowing-btn" style="display: none;">ENTER EXPERIENCE</button>
+        <p class="enter-subtext" id="enter-sub" style="display: none;">Turn on sound for the full cinematic experience</p>
+      </div>
+    </div>
+
+    <!-- Floating Navbar -->
+    <nav class="navbar" id="navbar">
+      <a href="#hero" class="nav-logo">AR<span>.</span></a>
+      <div class="nav-links">
+        <a href="#hero" class="nav-link active" data-index="0">OVERVIEW</a>
+        <a href="#skills" class="nav-link" data-index="1">SKILLS</a>
+        <a href="#projects" class="nav-link" data-index="2">PROJECTS</a>
+        <a href="#experience" class="nav-link" data-index="3">EXPERIENCE</a>
+        <a href="#achievements" class="nav-link" data-index="4">MEDALS</a>
+        <a href="#certificates" class="nav-link" data-index="5">CERTIFICATES</a>
+        <a href="#contact" class="nav-link" data-index="6">LEAP</a>
+      </div>
+      <button class="sound-toggle" id="sound-toggle">
+        <i class="fa-solid fa-volume-mute"></i>
+      </button>
+    </nav>
+
+ 
+
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress-container">
+      <div class="scroll-progress-bar" id="scroll-progress"></div>
+    </div>
+
+    <!-- Active Content Sections (Overlay on top of WebGL Scene) -->
+    <div id="content-container">
+      <!-- HERO SECTION -->
+      <section id="hero" class="scroll-section">
+        <div class="hero-content">
+          <h1 class="cinematic-title">
+            <span class="glitch-word">ANAND RAJ</span>
+          </h1>
+          <h2 class="cinematic-subtitle">Full Stack Developer</h2>
+          <p class="cinematic-tagline">"Building experiences beyond imagination."</p>
+          <div class="cta-group">
+            <a href="#skills" class="glowing-btn magnetic-btn">Explore Journey</a>
+            <a href="#projects" class="outline-btn magnetic-btn">View Projects</a>
+          </div>
+        </div>
+        <div class="scroll-down-hint">
+          <span class="mouse-icon"><span class="mouse-wheel"></span></span>
+          <span class="hint-text">SCROLL TO SWING</span>
+        </div>
+      </section>
+
+      <!-- SKILLS SECTION -->
+      <section id="skills" class="scroll-section">
+        <div class="section-overlay-panel left-panel">
+          <span class="section-tag">01 / NODE INTERFACE</span>
+          <h2 class="section-title">HOLOGRAPHIC SKILLS</h2>
+          <p class="section-description">
+            Hover over the nodes on the giant neon web strand. Click any skill node to focus and view detailed telemetry.
+          </p>
+          <div class="skills-telemetry" id="skills-telemetry">
+            <div class="telemetry-row">
+              <span class="label">STATUS:</span> <span class="val pulse">ACTIVE</span>
+            </div>
+            <div class="telemetry-row">
+              <span class="label">NODE:</span> <span class="val" id="telemetry-node">SELECT A NODE</span>
+            </div>
+            <div class="telemetry-row">
+              <span class="label">POWER:</span> <span class="val" id="telemetry-level">--%</span>
+            </div>
+            <div class="telemetry-divider"></div>
+            <div class="telemetry-skills-list" id="telemetry-skills-list"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROJECTS SECTION -->
+      <section id="projects" class="scroll-section">
+        <div class="section-overlay-panel right-panel">
+          <span class="section-tag">02 / SKYSCRAPER ARCHIVE</span>
+          <h2 class="section-title">METROPOLIS ARCHIVE</h2>
+          <p class="section-description">
+            Each skyscraper represents a deployment. Use scroll or mouse hover to inspect the digital architectures.
+          </p>
+          
+          <!-- Projects interactive Selector cards -->
+          <div class="project-cards-container" id="project-cards">
+            <!-- Dynamically populated or statically written project lists -->
+          </div>
+        </div>
+      </section>
+
+      <!-- EXPERIENCE SECTION -->
+      <section id="experience" class="scroll-section">
+        <div class="section-overlay-panel left-panel">
+          <span class="section-tag">03 / ELEVATION TRACK</span>
+          <h2 class="section-title">CLIMBING ELEVATION</h2>
+          <p class="section-description">
+            Each rooftop represent a career elevation milestone. The taller the building, the higher the impact.
+          </p>
+          <div class="experience-list" id="experience-list">
+            <!-- Populated via JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ACHIEVEMENTS SECTION -->
+      <section id="achievements" class="scroll-section">
+        <div class="section-overlay-panel center-panel achievements-panel">
+          <span class="section-tag">04 / HOLOGRAPHIC REWARDS</span>
+          <h2 class="section-title">DECORATION & MEDALS</h2>
+          <p class="section-description">
+            Holographic recognitions awarded for high performance and architectural contributions.
+          </p>
+          <div class="achievements-grid" id="achievements-grid">
+            <!-- Populated via JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- CERTIFICATES SECTION -->
+      <section id="certificates" class="scroll-section">
+        <div class="section-overlay-panel certificates-panel">
+          <span class="section-tag">05 / VERIFIED TELEMETRY</span>
+          <h2 class="section-title">CERTIFICATE ARCHIVE</h2>
+          <p class="section-description">
+            Official credentials and hackathon accolades verifying engineering and machine learning capabilities.
+          </p>
+          <div class="certificates-slider-wrapper">
+            <div class="certificates-slider" id="certificates-slider">
+              <!-- Populated via JS -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT SECTION -->
+      <section id="contact" class="scroll-section">
+        <!-- Bottom Left Resume Button -->
+        <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" class="contact-resume-btn outline-btn magnetic-btn" id="resume-btn" title="Open Resume PDF">
+          <i class="fa-solid fa-file-arrow-down"></i>
+          <span>MY RESUME</span>
+        </a>
+
+        <div class="contact-content">
+          <span class="section-tag">05 / LEAP OF FAITH</span>
+          <h1 class="ending-quote">"Every great product begins with one leap."</h1>
+          <p class="contact-sub">Have a project in mind, or want to collaborate? Get in touch.</p>
+          
+          <!-- Contact Glassmorphic Form -->
+          <form class="contact-form" id="contact-form">
+            <div class="form-row">
+              <input type="text" id="contact-name" name="name" placeholder="YOUR NAME" required />
+              <input type="email" id="contact-email" name="email" placeholder="YOUR EMAIL" required />
+            </div>
+            <textarea id="contact-msg" name="message" placeholder="PROJECT TRANSMISSION DETAILS" rows="4" required></textarea>
+            <button type="submit" class="glowing-btn">SEND SIGNAL</button>
+          </form>
+
+          <div class="contact-socials">
+            <a href="https://www.linkedin.com/in/anand-raj-059011387/" target="_blank" class="social-icon magnetic-btn" id="linkedin-link"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://github.com/anandrajjee981-max" target="_blank" class="social-icon magnetic-btn" id="github-link"><i class="fa-brands fa-github"></i></a>
+            <a href="https://www.instagram.com/anand_raj9435/" target="_blank" class="social-icon magnetic-btn" id="instagram-link"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Project Details Glass Modal (Popup if user clicks a project skyscraper) -->
+    <div class="project-modal" id="project-modal">
+      <div class="modal-content glass-card">
+        <button class="close-modal" id="close-modal">&times;</button>
+        <span class="modal-tag" id="modal-project-tag">PROJECT DETECTED</span>
+        <h2 class="modal-title" id="modal-project-title">PROJECT NAME</h2>
+        <div class="modal-tech-stack" id="modal-project-tech">
+          <!-- Tech items -->
+        </div>
+        <p class="modal-description" id="modal-project-desc">Description details...</p>
+        <div class="modal-links">
+          <a href="#" target="_blank" id="modal-github-link" class="modal-btn outline-btn"><i class="fa-brands fa-github"></i> GitHub</a>
+          <a href="#" target="_blank" id="modal-video-link" class="modal-btn video-btn"><i class="fa-solid fa-play"></i> Video Demo</a>
+          <a href="#" target="_blank" id="modal-demo-link" class="modal-btn glowing-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Certificate Details Lightbox Modal -->
+    <div class="project-modal" id="certificate-modal">
+      <div class="modal-content glass-card certificate-modal-content">
+        <button class="close-modal" id="close-certificate-modal">&times;</button>
+        <span class="modal-tag" id="modal-cert-tag">CREDENTIAL VERIFIED</span>
+        <h2 class="modal-title" id="modal-cert-title">CERTIFICATE NAME</h2>
+        <div class="modal-cert-issuer-container">
+          <span class="modal-cert-issuer" id="modal-cert-issuer">ISSUER</span>
+          <span class="modal-cert-date" id="modal-cert-date">DATE</span>
+        </div>
+        <div class="modal-cert-preview-container">
+          <img src="" alt="Certificate Image" class="modal-cert-img" id="modal-cert-img" />
+        </div>
+        <p class="modal-description" id="modal-cert-desc">Description details...</p>
+        <div class="modal-links">
+          <a href="#" target="_blank" id="modal-cert-link" class="modal-btn glowing-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Certificate</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Script Entrypoint -->
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
