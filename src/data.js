@@ -20,7 +20,8 @@ export const skills = [
   { name: "Redis", category: "database", level: 70 },
   { name: "GSAP", category: "creative", level: 85 },
   { name: "Framer Motion", category: "creative", level: 80 },
-  { name: "Git", category: "tools", level: 90 }
+  { name: "Git", category: "tools", level: 90 },
+  {name:"Docker" ,category:"devops", level:80}
 ];
 
 export const projects = [
@@ -104,10 +105,10 @@ export const projects = [
 export const experience = [
   {
     id: "pearlthoughts",
-    company: "PearlThoughts",
-    role: "Backend Developer Intern",
-    period: "2026",
-    details: "Developed backend modules using NestJS, TypeScript, and PostgreSQL. Worked on authentication, REST APIs, database design, and scalable backend architecture.",
+    company: "BRMH.ai",
+    role: "SDE Intern",
+    period: "2026 - present",
+    details: "Contributing to full-stack feature development using MERN stack and PostgreSQL; building and maintaining backend REST APIs,database schemas, and server-side logic in a production environment",
     buildingHeight: 70,
     floor: 1,
     color: "#00E5FF"
