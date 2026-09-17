@@ -25,6 +25,21 @@ export const skills = [
 ];
 
 export const projects = [
+    {
+    id: "trace",
+    name: "TraceSketch",
+    description: "Local-first API tracing, replay, and regression testing for Node.js.",
+    tech: ["Node.js" , "TypeScript" , "SQLite" , "React.js" ,"React.js", "Express.js" , "npm workspace" ,"CLS"],
+    github: "https://github.com/anandrajjee981-max/TraceSketch",
+    demo: "https://www.npmjs.com/package/tracesketch",
+    video: "https://www.npmjs.com/package/tracesketch",
+    color: "#00E5FF", // Cyan
+    height: 120,
+    width: 25,
+    depth: 25,
+    x: -40,
+    z: -80
+  },
   {
     id: "snitch",
     name: "Highkeytees E-Commerce",
