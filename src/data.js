@@ -28,11 +28,11 @@ export const projects = [
     {
     id: "trace",
     name: "TraceSketch",
-    description: "Local-first API tracing, replay, and regression testing for Node.js.",
-    tech: ["Node.js" , "TypeScript" , "SQLite" , "React.js" ,"React.js", "Express.js" , "npm workspace" ,"CLS"],
+    description: "Local-first API tracing, replay, regression testing, and real-time pair debugging for Node.js.Capture real requests, replay them anywhere, turn fixed bugs into permanent regression tests, and debug together with another developer in real time  all local-first by default.",
+    tech: ["Node.js" , "TypeScript" , "SQLite" , "React.js" ,"React.js", "Express.js" , "npm workspace" ,"SOCKET.IO"],
     github: "https://github.com/anandrajjee981-max/TraceSketch",
     demo: "https://www.npmjs.com/package/tracesketch",
-    video: "https://www.npmjs.com/package/tracesketch",
+    video: "https://youtu.be/YNaeYQ0bb8k?si=AQGoRcmoyA4N3g-k",
     color: "#00E5FF", // Cyan
     height: 120,
     width: 25,
